@@ -26,5 +26,8 @@ else
   _az_zsh_completer_path=/etc/bash_completion.d/azure-cli
 fi
 
-[[ -r $_az_zsh_completer_path ]] && source $_az_zsh_completer_path
+if [[ -r $_az_zsh_completer_path ]] then
+    [[ -f "$ANTIGEN_COMPDUMP" ]] && rm -f "$ANTIGEN_COMPDUMP" "$ANTIGEN_COMPDUMP.zwc" 
+    source $_az_zsh_completer_path
+fi
 unset _az_zsh_completer_path _brew_prefix
